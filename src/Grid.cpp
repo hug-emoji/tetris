@@ -34,15 +34,15 @@ void Grid::draw(sf::RenderWindow& window) const{
         sf::Vector2f(Tile::SIDE_LENGTH, Tile::SIDE_LENGTH)
     };
 
-    for(int i = HEIGHT_IN_TILES; i > 0; i--){
+    for(int i = HEIGHT_IN_TILES - 1; i >= 0; i--){
         for(int j = 0; j < WIDTH_IN_TILES; j++){
             tileRect.setFillColor(
-                getTileAt(sf::Vector2i(i, j)).color
+                getTileAt(sf::Vector2i(j, i)).color
             );
             tileRect.setPosition(
                 sf::Vector2f(
-                    i, j
-                ) * Tile::SIDE_LENGTH
+                    j, i
+                ) * Tile::SIDE_LENGTH + Grid::ORIGIN
             );
 
             window.draw(tileRect);
